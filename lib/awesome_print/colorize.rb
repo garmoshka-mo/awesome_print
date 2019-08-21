@@ -8,7 +8,7 @@ module AwesomePrint
     def colorize(str, type)
       str = CGI.escapeHTML(str) if options[:html]
       if options[:plain] || !options[:color][type] || !inspector.colorize?
-        str
+        CodeRay.scan(str, :ruby).term
       #
       # Check if the string color method is defined by awesome_print and accepts
       # html parameter or it has been overriden by some gem such as colorize.
