@@ -51,6 +51,10 @@ module AwesomePrint
             indented { temp << inspector.awesome(item) }
           end
         end
+      rescue => e
+        puts e.to_s
+        puts e.backtrace
+        ["Error on array inspection: #{e.to_s}"]
       end
 
       def array_prefix(iteration, width)
